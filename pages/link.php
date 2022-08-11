@@ -21,3 +21,12 @@
   <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
   <!-- datatable -->
   <link rel="stylesheet" type="text/css" href="../plugins/datatables/datatables.min.css"/>
+  <style>
+    body {
+      background: url(../dist/img/bg2.jpg) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>

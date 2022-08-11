@@ -37,18 +37,20 @@
 <script>
   moment.locale('th');
   const configTata = {
-        position: 'tr',
-        progress: true,
-      }
+    position: 'tr',
+    progress: true,
+  }
+
 </script>
 
 <style>
-   @font-face {
-  font-family: "Prompt-Regular";
-  src: url(../dist/font/Prompt/Prompt-Regular.ttf);
-}
-body{
-  font-family: "Prompt-Regular";
-  background-color: #EEEE;
-}
+  @font-face {
+    font-family: "Prompt-Regular";
+    src: url(../dist/font/Prompt/Prompt-Regular.ttf);
+  }
+
+  body {
+    font-family: "Prompt-Regular";
+    background-color: #EEEE;
+  }
 </style>

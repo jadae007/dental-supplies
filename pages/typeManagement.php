@@ -52,7 +52,6 @@
     </div>
     <?php require_once("components/footer.php") ?>
   </div>
-<script src="ajax/main.js"></script>
+<script src="ajax/typeManagement.js"></script>
 </body>
-
 </html>

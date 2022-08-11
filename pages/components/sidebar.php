@@ -9,7 +9,7 @@
   <div class="sidebar">
     <!-- Sidebar Menu -->
     <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+      <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-header">Medical Supplies</li>
         <li class="nav-item">
           <a href="test" class="nav-link">
@@ -65,13 +65,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+          <a href="groupManagement" class="nav-link" id="sideBarGroupManagement">
             <i class="nav-icon fas fa-layer-group"></i>
             <p>จัดการกลุ่ม</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+          <a href="https://adminlte.io/docs/3.1/" class="nav-link" id="sideBarTypeManagement">
             <i class="nav-icon fas fa-stream"></i>
             <p>จัดการประเภท</p>
           </a>

@@ -27,9 +27,9 @@ if (!empty($_POST)) {
       setcookie("fullname", $fullname, time() + (60 * 60 * 24 * 7), '/dental-supplies/');
       setcookie("role", $row_user['role'], time() + (60 * 60 * 24 * 7), '/dental-supplies/');
     }
-    $resultLogin['loginObj'] = array("status"=>true,"message"=>"Successful sign-in","role"=>$row_user['role']);
+    $resultLogin = array("status"=>true,"message"=>"Successful sign-in","role"=>$row_user['role']);
   }else{
-    $resultLogin['loginObj'] = array("status"=>false,"message"=>"username หรือ password ไม่ถูกต้อง","role"=>null);
+    $resultLogin = array("status"=>false,"message"=>"Username หรือ Password ไม่ถูกต้อง","role"=>null);
   }
   print json_encode($resultLogin,JSON_UNESCAPED_UNICODE);
 } else {
