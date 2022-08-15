@@ -77,6 +77,7 @@ const updateActiveGroup = (id, active) => {
     },
   });
 };
+
 const openModalAdd = () => {
   $("#submit").val("add");
   $("#groupManagementModalLabel").text("เพิ่มกลุ่มเวชภัณฑ์");
