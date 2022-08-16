@@ -120,7 +120,7 @@ const updateActiveType = (id, active) => {
     success: function (response) {
       const { status, message } = JSON.parse(response);
       if (status)
-        return tata.success("Updated successfully.", message, configTata);
+        return tata.success("Update successfully.", message, configTata);
       tata.error("Update Failed.", message, configTata);
       $(`#activeSwitch${id}`).prop("checked", !active);
     },
@@ -128,6 +128,7 @@ const updateActiveType = (id, active) => {
 };
 
 const openModalEdit = (id) => {
+  $("#from")[0].reset();
   $.ajax({
     type: "GET",
     url: "query/showTypeDetail",
@@ -153,6 +154,7 @@ const closeModal = () => {
 };
 
 const openModalAdd = () => {
+  $("#from")[0].reset();
   $("#submit").val("add");
   $("#typeManagementModalLabel").text("เพิ่มกลุ่มเวชภัณฑ์");
   $("#typeManagementModal").modal("show");

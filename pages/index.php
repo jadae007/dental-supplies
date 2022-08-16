@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['loginId'])) {
-  if (isset($_COOKIE['loginId']) && isset($_COOKIE['role'])) {
+  if (isset($_COOKIE['loginId'])) {
     $_SESSION['loginId'] = $_COOKIE['loginId'];
     $_SESSION['role'] = $_COOKIE['role'];
     $_SESSION['fullname'] = $_COOKIE['fullname'];

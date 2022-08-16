@@ -1,9 +1,5 @@
 <?php
 session_start();
-if(!isset($_SESSION['loginId'])){
+if(!isset($_SESSION['loginId']) || !isset($_SESSION['role']) || !isset($_SESSION['fullname'])){
   header("Location:index");
-}else{
-  $s_cid = $_SESSION['cid'];
-  $s_token = $_SESSION['token'];
 }
-

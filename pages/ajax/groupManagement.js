@@ -71,7 +71,7 @@ const updateActiveGroup = (id, active) => {
     success: function (response) {
       const { status, message } = JSON.parse(response);
       if (status)
-        return tata.success("Updated successfully.", message, configTata);
+        return tata.success("Update successfully.", message, configTata);
       tata.error("Update Failed.", message, configTata);
       $(`#activeSwitch${id}`).prop("checked", !active);
     },
@@ -79,11 +79,14 @@ const updateActiveGroup = (id, active) => {
 };
 
 const openModalAdd = () => {
+  $("#from")[0].reset();
+  $("#startLetter").prop("readonly", false);
   $("#submit").val("add");
   $("#groupManagementModalLabel").text("เพิ่มกลุ่มเวชภัณฑ์");
   $("#groupManagementModal").modal("show");
 };
 const openModalEdit = (id) => {
+  $("#from")[0].reset();
   $.ajax({
     type: "GET",
     url: "query/showGroupDetail",

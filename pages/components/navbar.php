@@ -1,5 +1,5 @@
  <?php
- session_start();
+  require_once("query/auth/checkLogin.php");
  ?>
  <!-- Navbar -->
  <nav class="main-header navbar navbar-expand navbar-white navbar-light">

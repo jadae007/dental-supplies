@@ -1,3 +1,6 @@
+<?php
+require_once("query/auth/checkAdmin.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,9 +16,12 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+  <input type="hidden" name="myRole" id="myRole" value="<?php echo $_SESSION['role']; ?>">
   <div class="wrapper">
-    <?php require_once("components/navbar.php"); ?>
-    <?php require_once("components/sidebar.php"); ?>
+    <?php
+    require_once("components/navbar.php");
+    require_once("components/sidebar.php");
+    ?>
     <div class="content-wrapper">
       <div class="content-header">
         <div class="container-fluid">
@@ -42,36 +48,27 @@
                   Users
                 </div>
                 <div class="card-body">
+                  <div class="row mb-4">
+                    <div class="col-12 text-right">
+                      <button class="btn btn-success" id="btnAddGroup" onclick="openModalAdd()">เพิ่มผู้ใช้งาน</button>
+                    </div>
+                  </div>
                   <div class="row">
                     <div class="col-12">
-                      <table class="table table-bordered" id="usersTable">
-                        <thead>
+                      <table class="table table-bordered table-hover" id="usersTable">
+                        <thead class="thead-light">
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">username</th>
+                            <th scope="col">ชื่อ นามสกุล</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">role</th>
+                            <th scope="col">สถานะ</th>
+                            <th scope="col">จัดการ</th>
                           </tr>
                         </thead>
                         <tbody id="tbody">
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry the Bird</td>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
+
                         </tbody>
                       </table>
                     </div>
@@ -83,7 +80,10 @@
         </div>
       </section>
     </div>
-    <?php require_once("components/footer.php") ?>
+    <?php
+    require_once("components/footer.php");
+    require_once("components/userManagementModal.php");
+    ?>
   </div>
   <script src="ajax/userManagement.js"></script>
 </body>

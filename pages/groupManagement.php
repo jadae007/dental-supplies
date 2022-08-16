@@ -1,3 +1,4 @@
+<?php require_once("query/auth/checkAdmin.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 

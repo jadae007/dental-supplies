@@ -57,6 +57,7 @@
             </li>
           </ul>
         </li>
+        <?php if($_SESSION['role'] <= 1 ){ ?>
         <li class="nav-header">Management</li>
         <li class="nav-item">
           <a href="https://adminlte.io/docs/3.1/" class="nav-link">
@@ -83,6 +84,7 @@
             <p>จัดการผู้ใช้งาน</p>
           </a>
         </li>
+        <?php } ?>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
