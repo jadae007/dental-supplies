@@ -1,7 +1,7 @@
 <?php 
 if(isset($_GET['group']) && $_GET['group'] != "all"){
   $gId = $_GET['group'];
-  $groupId = "AND g.id = '$gId'";
+  $groupId = "AND t.groupId = '$gId'";
 }else{
   $groupId = "";
 }

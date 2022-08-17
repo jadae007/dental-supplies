@@ -79,15 +79,15 @@ const listType = (group) => {
          <td>${element.groupName}</td>
          <td>${element.typeName}</td>
          <td data-order="${element.typeActive}">
-         <div class="custom-control custom-switch">
-         <input type="checkbox" class="custom-control-input" id="activeSwitch${
+         <div class="custom-control custom-switch" >
+         <input type="checkbox"  class="custom-control-input" id="activeSwitch${
            element.typeId
          }"
      `;
           html += element.typeActive === "1" ? "checked" : "";
           html += `
-    >
-         <label class="custom-control-label" for="activeSwitch${element.typeId}"> </label>
+    />
+         <label class="custom-control-label" for="activeSwitch${element.typeId}" style="cursor:pointer"> </label>
        </div>
      </td>
      <td><button type="button" class="btn btn-warning" onclick="openModalEdit('${element.typeId}')">แก้ไข</button></td>
@@ -119,8 +119,7 @@ const updateActiveType = (id, active) => {
     },
     success: function (response) {
       const { status, message } = JSON.parse(response);
-      if (status)
-        return tata.success("Update successfully.", message, configTata);
+      if (status) return tata.success("Update successfully.", message, configTata);
       tata.error("Update Failed.", message, configTata);
       $(`#activeSwitch${id}`).prop("checked", !active);
     },

@@ -40,12 +40,12 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                ประเภท
+                  ประเภท
                 </div>
                 <div class="card-body">
-                <div class="row mb-3">
+                  <div class="row mb-3">
                     <div class="col-12 text-right">
-                    <button class="btn btn-success" id="btnAddGroup" onclick="openModalAdd()">เพิ่มประเภท</button>
+                      <button class="btn btn-success" id="btnAddGroup" onclick="openModalAdd()">เพิ่มประเภท</button>
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -61,19 +61,21 @@
                   </div>
                   <div class="row mb-3">
                     <div class="col-12">
-                    <table class="table table-hover" id="tableType">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">กลุ่ม</th>
-                        <th scope="col">ชื่อประเภท</th>
-                        <th scope="col">สถานะ</th>
-                        <th scope="col">จัดการ</th>
-                      </tr>
-                    </thead>
-                    <tbody id="tbody">
-                    </tbody>
-                  </table>
+                      <div class="table-responsive">
+                        <table class="table table-hover" id="tableType">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">กลุ่ม</th>
+                              <th scope="col">ชื่อประเภท</th>
+                              <th scope="col">สถานะ</th>
+                              <th scope="col">จัดการ</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbody">
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -83,10 +85,10 @@
         </div>
       </section>
     </div>
-    <?php 
+    <?php
     require_once("components/footer.php");
     require_once("components/typeManagementModal.php");
-     ?>
+    ?>
   </div>
   <script src="ajax/typeManagement.js"></script>
 </body>

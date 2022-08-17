@@ -45,38 +45,39 @@
                 <div class="card-body">
                   <div class="row mb-3">
                     <div class="col-12 text-right">
-                    <button class="btn btn-success" id="btnAddGroup" onclick="openModalAdd()">เพิ่มกลุ่ม</button>
+                      <button class="btn btn-success" id="btnAddGroup" onclick="openModalAdd()">เพิ่มกลุ่ม</button>
                     </div>
                   </div>
                   <div class="card-body">
-                  <div class="row mb-3">
-                    <div class="col-12">
-                    <table class="table table-hover" id="tableGroup">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">ชื่อกลุ่ม</th>
-                        <th scope="col">อักษรเริ่มต้น</th>
-                        <th scope="col">สถานะ</th>
-                        <th scope="col">จัดการ</th>
-                      </tr>
-                    </thead>
-                    <tbody id="tbody">
-                    </tbody>
-                  </table>
+                    <div class="row mb-3">
+                      <div class="col-12">
+                        <div class="table-responsive">
+                          <table class="table table-hover" id="tableGroup">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">ชื่อกลุ่ม</th>
+                                <th scope="col">อักษรเริ่มต้น</th>
+                                <th scope="col">สถานะ</th>
+                                <th scope="col">จัดการ</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tbody">
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
-            
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
     </div>
     <?php
-     require_once("components/footer.php");
-     require_once("components/groupManagementModal.php");
+    require_once("components/footer.php");
+    require_once("components/groupManagementModal.php");
     ?>
   </div>
   <script src="ajax/groupManagement.js"></script>

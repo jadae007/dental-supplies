@@ -33,18 +33,14 @@ const listGroup = () => {
           <td>${element.startLetter}</td>
           <td data-order="${element.active}">
             <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="activeSwitch${
-              element.id
-            }"
-        `;
-        html += element.active === "1" ? "checked" : "";
-        html += `
-       >
-            <label class="custom-control-label" for="activeSwitch${element.id}"> </label>
-          </div>
-        </td>
-        <td><button type="button" class="btn btn-warning" onclick="openModalEdit('${element.id}')">แก้ไข</button></td>
-      </tr>
+              <input type="checkbox" class="custom-control-input" id="activeSwitch${element.id}"`;
+              html += element.active === "1" ? "checked" : "";
+              html += `>
+              <label class="custom-control-label" for="activeSwitch${element.id}" style="cursor:pointer"></label>
+            </div>
+          </td>
+          <td><button type="button" class="btn btn-warning" onclick="openModalEdit('${element.id}')">แก้ไข</button></td>
+        </tr>
        `;
       });
       $("#tbody").append(html);

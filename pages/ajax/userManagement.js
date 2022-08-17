@@ -38,20 +38,39 @@ const listUsers = (role) => {
           <td>${element.role}</td>
           <td>`;
           if (element.active == 1) {
-            html += `<span class="badge badge-success" style="cursor:pointer">Active</span>`;
+            html += `<span class="badge badge-success" onclick="updateActive('${element.id}','${element.active}')" style="cursor:pointer">Active</span>`;
           } else {
-            html += `<span class="badge badge-danger" style="cursor:pointer">Disable</span>`;
+            html += `<span class="badge badge-danger" onclick="updateActive('${element.id}','${element.active}')" style="cursor:pointer">Disable</span>`;
           }
           html += `</td>
           <td>
-          <button type="button" class="btn btn-info" onclick="openModalEdit('${element.id}')">แก้ไข</button>
-          <button type="button" class="btn btn-warning" onclick="resetPassword('${element.id}','${element.username}')">Reset</button>
+          <button type="button" class="btn btn-info mb-2" onclick="openModalEdit('${element.id}')">แก้ไข</button>
+          <button type="button" class="btn btn-warning mb-2" onclick="resetPassword('${element.id}','${element.username}')">Reset</button>
           </td>
         </tr>`;
         });
         $("#tbody").append(html);
       }
       $("#usersTable").DataTable();
+    },
+  });
+};
+
+const updateActive = (id, status) => {
+  let active = Number(status) ? 0 : 1;
+  $.ajax({
+    type: "POST",
+    url: "query/updateActiveUser",
+    data: {
+      id,
+      active
+    },
+    success: function (response) {
+      const { status, message } = JSON.parse(response);
+      if (!status)
+        return  tata.error("Update Failed.", message, configTata);
+      tata.success("Update successfully.", message, configTata);
+      listUsers(myRole.value);
     },
   });
 };
