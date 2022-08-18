@@ -75,7 +75,7 @@ require_once("query/auth/checkAdmin.php");
                   </div>
                   <div class="row mb-4">
                     <div class="col-12 text-right">
-                      <button class="btn btn-success" id="btnAddGroup" onclick="openModalAdd()">เพิ่มไอเท็ม</button>
+                      <button class="btn btn-success" id="btnAddGroup" onclick="openModalAdd()">เพิ่มไอเท็มใหม่</button>
                     </div>
                   </div>
                   <div class="row">
@@ -86,6 +86,7 @@ require_once("query/auth/checkAdmin.php");
                             <tr>
                               <th scope="col">#</th>
                               <th scope="col">ชื่อเวชภัณฑ์</th>
+                              <th scope="col">กลุ่ม</th>
                               <th scope="col">ประเภท</th>
                               <th scope="col">หน่วยนับ</th>
                               <th scope="col">จำนวน</th>
@@ -110,7 +111,7 @@ require_once("query/auth/checkAdmin.php");
     </div>
     <?php
     require_once("components/footer.php");
-    // require_once("components/userManagementModal.php");
+     require_once("components/medSupplyManagementModal.php");
     ?>
   </div>
   <script src="ajax/medSupplyManagement.js"></script>
