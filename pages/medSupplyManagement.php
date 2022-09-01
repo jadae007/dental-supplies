@@ -63,11 +63,6 @@ require_once("query/auth/checkAdmin.php");
                         <div class="col-sm-10">
                           <select class="form-control" id="typeSelect" name="typeSelect">
                             <option value="all">ทั้งหมด</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
                           </select>
                         </div>
                       </div>
@@ -91,6 +86,7 @@ require_once("query/auth/checkAdmin.php");
                               <th scope="col">หน่วยนับ</th>
                               <th scope="col">จำนวน</th>
                               <th scope="col">ราคา/หน่วยนับ</th>
+                              <th scope="col">วันหมดอายุ</th>
                               <th scope="col">สถานะ</th>
                               <th scope="col">จัดการ</th>
                             </tr>

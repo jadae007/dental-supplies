@@ -18,6 +18,7 @@ const listUsers = (role) => {
     },
     success: function (response) {
       const { usersObj } = JSON.parse(response);
+      console.log(usersObj)
       $("#usersTable").DataTable().destroy();
       $("#tbody").children().remove();
       if (usersObj) {
