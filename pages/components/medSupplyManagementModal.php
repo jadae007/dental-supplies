@@ -61,7 +61,7 @@
             </div>
             <label for="price" class="col-sm-2 col-form-label">ราคา/หน่วยนับ <span style="color:red">*</span></label>
             <div class="col-sm-4">
-              <input type="number" class="form-control" id="price" name="price" required>
+              <input type="text" class="form-control" id="price" name="price" required>
             </div>
           </div>
           <div class="form-group row">

@@ -15,7 +15,7 @@
           <a href="test" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
             <p>
-              รายการเวชภัณฑ์
+              เบิกเวชภัณฑ์
               <!-- <span class="badge badge-info right">2</span> -->
             </p>
           </a>

@@ -151,7 +151,7 @@ const addSupply = () => {
   $.ajax({
     type: "POST",
     enctype: "multipart/form-data",
-    url: "query/addSupply",
+    url: "query/addItem",
     data,
     processData: false,
     contentType: false,
@@ -167,7 +167,26 @@ const addSupply = () => {
 };
 
 const editSupply = (id) => {
-  console.log("edit");
+  let form = $("#form")[0];
+  let data = new FormData(form);
+  let group = $("#groupSelect").val()
+  let type = $("#typeSelect").val()
+  $.ajax({
+    type: "POST",
+    enctype: "multipart/form-data",
+    url: "query/editItem",
+    data,
+    processData: false,
+    contentType: false,
+    cache: false,
+    success: function (response) {
+      const { status, message } = JSON.parse(response);
+      if (!status) return tata.error("Edit Failed.", message, configTata);
+      tata.success("Edit successfully.", message, configTata);
+      closeModal();
+      listItems(`${group}`,`${type}`);
+    },
+  });
 };
 
 const openModalEdit = (id) => {
