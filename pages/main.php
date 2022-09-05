@@ -1,3 +1,6 @@
+<?php
+require_once("query/auth/checkAdmin.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,20 +16,23 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+  <input type="hidden" name="myRole" id="myRole" value="<?php echo $_SESSION['role']; ?>">
   <div class="wrapper">
-    <?php require_once("components/navbar.php"); ?>
-    <?php require_once("components/sidebar.php"); ?>
+    <?php
+    require_once("components/navbar.php");
+    require_once("components/sidebar.php");
+    ?>
     <div class="content-wrapper">
       <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Page Header</h1>
+              <h1 class="m-0">จัดการเวชภัณฑ์</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Page Location</li>
+                <li class="breadcrumb-item active">เบิกเวชภัณฑ์</li>
               </ol>
             </div>
           </div>
@@ -39,10 +45,55 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  Card Header
+                  Medical Supplies
                 </div>
                 <div class="card-body">
-                <h1>Hello</h1>
+                  <div class="row mb-4">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                      <div class="form-group row">
+                        <label for="groupSelect" class="col-sm-2 col-form-label">กลุ่ม</label>
+                        <div class="col-sm-10">
+                          <select class="form-control" id="groupSelect" name="groupSelect">
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="typeSelect" class="col-sm-2 col-form-label">ประเภท</label>
+                        <div class="col-sm-10">
+                          <select class="form-control" id="typeSelect" name="typeSelect">
+                            <option value="all">ทั้งหมด</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover" id="supplyTable">
+                          <thead class="thead-light">
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">ชื่อเวชภัณฑ์</th>
+                              <th scope="col">กลุ่ม</th>
+                              <th scope="col">ประเภท</th>
+                              <th scope="col">หน่วยนับ</th>
+                              <th scope="col">จำนวน</th>
+                              <th scope="col">ราคา/หน่วยนับ</th>
+                              <th scope="col">วันหมดอายุ</th>
+                              <th scope="col">จัดการ</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbody">
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -50,9 +101,12 @@
         </div>
       </section>
     </div>
-    <?php require_once("components/footer.php") ?>
+    <?php
+    require_once("components/footer.php");
+     require_once("components/medSupplyManagementModal.php");
+    ?>
   </div>
-<script src="ajax/main.js"></script>
+  <script src="ajax/order.js"></script>
 </body>
 
 </html>
