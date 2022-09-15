@@ -84,7 +84,7 @@ require_once("query/auth/checkAdmin.php");
                               <th scope="col">จำนวน</th>
                               <th scope="col">ราคา/หน่วยนับ</th>
                               <th scope="col">วันหมดอายุ</th>
-                              <th scope="col">จัดการ</th>
+                              <th scope="col" class="text-center">เพิ่มลงตะกร้า</th>
                             </tr>
                           </thead>
                           <tbody id="tbody">
@@ -103,10 +103,38 @@ require_once("query/auth/checkAdmin.php");
     </div>
     <?php
     require_once("components/footer.php");
-     require_once("components/medSupplyManagementModal.php");
+    require_once("components/medSupplyManagementModal.php");
     ?>
   </div>
-  <script src="ajax/order.js"></script>
+
+  <!-- Modal add -->
+  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addModalLabel">เบิกเวชภัณฑ์</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="quantity" class="col-sm-2 col-form-label">จำนวน</label>
+            <div class="col-sm-10">
+              <input type="hidden" id="idCart">
+              <input type="hidden" id="itemName">
+              <input type="hidden" id="maxQuantity">
+              <input type="number" class="form-control" min="1" max="9999" id="quantity" name="quantity">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btnAddCart" class="btn btn-primary">เพิ่มลงตะกร้า</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="ajax/main.js"></script>
 </body>
 
 </html>
