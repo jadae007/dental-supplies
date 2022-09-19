@@ -15,10 +15,18 @@
           <a href="main" class="nav-link" id="sideBarOrder">
             <i class="far fa-list-alt"></i>
             <p>
-              เบิกเวชภัณฑ์ 
+              เบิกเวชภัณฑ์
             </p>
           </a>
         </li>
+        <!-- <li class="nav-item">
+          <a href="dashboard" class="nav-link" id="sideBarDashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <p>
+              Dashboard
+            </p>
+          </a>
+        </li> -->
         <?php if ($_SESSION['role'] <= 1) { ?>
           <li class="nav-header">Management</li>
           <li class="nav-item">

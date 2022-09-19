@@ -10,6 +10,7 @@
      </li>
      <li class="nav-item d-none d-sm-inline-block">
        <a href="./" class="nav-link">Home</a>
+       <input type="hidden" name="navUserId" id="navUserId" value="<?php echo $_SESSION['loginId']; ?>">
      </li>
    </ul>
 
@@ -58,28 +59,12 @@
        </div>
        <div class="modal-body">
          <table class="show-cart table" id="cartTable">
-           <tr>
-             <td>1</td>
-             <td>
-               <div class="input-group mb-3">
-                 <div class="input-group-prepend">
-                   <button class="btn btn-outline-danger" type="button" id="button-addon1">-</button>
-                 </div>
-                 <input type="text" class="form-control" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                 <div class="input-group-append">
-                   <button class="btn btn-outline-success" type="button" id="button-addon1">+</button>
-                 </div>
-               </div>
-             </td>
-             <td>
-               <button type="button" class="btn btn-danger">Remove</button>
-             </td>
-           </tr>
+
          </table>
        </div>
        <div class="modal-footer">
-         <button type="button" class="btn btn-danger">ลบทั้งหมด</button>
-         <button type="button" class="btn btn-primary">เบิกเวชภัณฑ์</button>
+         <button type="button" class="btn btn-danger" id="removeAll" onclick="removeAllItem();">ลบทั้งหมด</button>
+         <button type="button" class="btn btn-primary" id="cutStock" onclick="cutStock();">เบิกเวชภัณฑ์</button>
        </div>
      </div>
    </div>
@@ -87,32 +72,46 @@
 
  <script>
    const showCart = () => {
-    $("#cartTable").children().remove()
+     $("#cartTable").children().remove()
      let cart = sessionStorage.getItem("cart") ? JSON.parse(sessionStorage.getItem("cart")) : null;
+     console.log(cart)
+     let cartLength = cart == null ? 0 : cart.length;
+     $("#cardCount").text(cartLength)
      if (cart) {
-      let cartTable = ""
-      cart.forEach((element,index) => {
-        cartTable += `
+       if (cartLength != 0) {
+         $("#removeAll").prop("disabled", false);
+         $("#cutStock").prop("disabled", false);
+       } else {
+         $("#removeAll").prop("disabled", true);
+         $("#cutStock").prop("disabled", true);
+       }
+
+       let cartTable = ""
+       cart.forEach((element, index) => {
+         cartTable += `
       <tr>
              <td>${element.itemName}</td>
              <td>
                <div class="input-group mb-3">
                  <div class="input-group-prepend">
-                   <button class="btn btn-outline-danger" type="button" id="button-decrease_${element.index}" onclick="decreaseItem(${index});">-</button>
+                   <button class="btn btn-outline-danger" type="button" id="button-decrease_${index}" onclick="decreaseItem(${index});">-</button>
                  </div>
                  <input type="number" class="form-control input-cart" id="input_${index}" value="${element.quantity}">
                  <div class="input-group-append">
-                   <button class="btn btn-outline-success" type="button" id="button-increase_${element.index}"  onclick="increaseItem(${index});">+</button>
+                   <button class="btn btn-outline-success" type="button" id="button-increase_${index}"  onclick="increaseItem(${index});">+</button>
                  </div>
                </div>
              </td>
              <td>
-               <button type="button" class="btn btn-danger">Remove</button>
+               <button type="button" class="btn btn-danger" onclick="removeItem('${index}')">Remove</button>
              </td>
            </tr>
       `
-      });
+       });
        $("#cartTable").append(cartTable)
+     } else {
+       $("#removeAll").prop("disabled", true);
+       $("#cutStock").prop("disabled", true);
      }
      $("#cartModal").modal("show")
    }
@@ -121,25 +120,62 @@
      $("#cardCount").text(cart)
    }
    countCart();
- 
-   const decreaseItem = (index) =>{
-   let val = $(`#input_${index}`).val()
-   $(`#input_${index}`).val(val-1)
-   let cart = JSON.parse(sessionStorage.getItem("cart"));
-   cart[index].quantity = val-1
-   sessionStorage.setItem("cart",JSON.stringify(cart))
+
+   const decreaseItem = (index) => {
+     let val = $(`#input_${index}`).val()
+     val = Number(val)
+     if (val - 1 == 0) return removeItem(index);
+     $(`#input_${index}`).val(val - 1)
+     let cart = JSON.parse(sessionStorage.getItem("cart"));
+     cart[index].quantity = val - 1
+     sessionStorage.setItem("cart", JSON.stringify(cart))
    }
 
-   const increaseItem = (index) =>{
-   let val = Number($(`#input_${index}`).val())
-   $(`#input_${index}`).val(val+1)
-   let cart = JSON.parse(sessionStorage.getItem("cart"));
-   cart[index].quantity = val+1
-   sessionStorage.setItem("cart",JSON.stringify(cart))
+   const increaseItem = (index) => {
+     let val = Number($(`#input_${index}`).val())
+     $(`#input_${index}`).val(val + 1)
+     let cart = JSON.parse(sessionStorage.getItem("cart"));
+     cart[index].quantity = val + 1
+     sessionStorage.setItem("cart", JSON.stringify(cart))
    }
 
-   const removeItem = (index) =>{
-    let cart = JSON.parse(sessionStorage.getItem("cart"));
-    //ยังไม่เสร็จ
+   const removeItem = (index) => {
+     let cart = JSON.parse(sessionStorage.getItem("cart"));
+     cart.splice(index, 1)
+     sessionStorage.setItem("cart", JSON.stringify(cart))
+     showCart();
+   }
+
+   const removeAllItem = () => {
+     sessionStorage.removeItem("cart");
+     $("#cartTable").children().remove();
+     $("#cardCount").text("0")
+   }
+
+   const cutStock = () => {
+     let cart = JSON.parse(sessionStorage.getItem("cart"));
+     $.ajax({
+       type: "POST",
+       url: "query/cutStock",
+       data: {
+         data: cart,
+       },
+       success: function(response) {
+         const {
+           status,
+           message
+         } = JSON.parse(response);
+         if (Boolean(status)) {
+           tata.success("successfully.", message, configTata);
+           removeAllItem();
+           $("#cartModal").modal("hide")
+           let group = $("#groupSelect").val();
+           let type = $("#typeSelect").val();
+           listItems(`${group}`, `${type}`);
+         } else {
+           tata.error("Failed.", message, configTata);
+         }
+       }
+     });
    }
  </script>

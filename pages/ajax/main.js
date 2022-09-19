@@ -20,12 +20,14 @@ $(document).ready(function () {
     let id = $("#idCart").val();
     let quantity = $("#quantity").val();
     let itemName = $("#itemName").val();
-    let maxQuantity = $("#maxQuantity").val();
+    let maxQuantity = Number($("#maxQuantity").val());
+    let userId = $("#navUserId").val()
     if(maxQuantity >= quantity && quantity > 0){
       let cartObj = {
         id,
         itemName,
         quantity,
+        userId,
       };
       addToCart(cartObj);
     }else{
@@ -39,7 +41,6 @@ const addToCart = (cartObj) => {
   let id = cartObj.id;
   let cart = sessionStorage.getItem("cart") ? JSON.parse(sessionStorage.getItem("cart")) : null;
   if (cart) {
-    console.log(cart);
     if (cart.some((x) => x.id == cartObj.id)) {
       let arrFilter = cart.filter(function (cart) {
         return cart.id !== id;
@@ -75,7 +76,6 @@ const listItems = (group, type) => {
       $("#supplyTable").DataTable().destroy();
       $("#tbody").children().remove();
       const { itemsObj } = JSON.parse(response);
-      console.log(itemsObj);
       let html = ``;
       if (!!itemsObj) {
         itemsObj.forEach((element, index) => {
