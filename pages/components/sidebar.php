@@ -19,6 +19,14 @@
             </p>
           </a>
         </li>
+           <li class="nav-item">
+          <a href="reStock" class="nav-link" id="sideBarreStock">
+          <i class="fas fa-sync-alt"></i>
+            <p>
+              เติมสต็อกเวชภัณฑ์
+            </p>
+          </a>
+        </li>
         <!-- <li class="nav-item">
           <a href="dashboard" class="nav-link" id="sideBarDashboard">
             <i class="fas fa-tachometer-alt"></i>
