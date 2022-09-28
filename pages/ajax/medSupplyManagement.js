@@ -53,7 +53,7 @@ const listItems = (group, type) => {
           <td>${element.unitCount}</td>
           <td>${Number(element.amount)}</td>
           <td>${Number(element.price)}</td>
-          <td>${element.expireDate}</td>
+          <td data-order="${moment(element.expireDate).unix()}">${moment(element.expireDate).format('LL')}</td>
           <td data-order="${element.itemActive}">${active}</td>
           <td><button type="button" class="btn btn-warning" onclick="openModalEdit('${
             element.id
