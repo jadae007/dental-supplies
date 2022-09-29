@@ -19,22 +19,22 @@
             </p>
           </a>
         </li>
-           <li class="nav-item">
+        <li class="nav-item">
           <a href="reStock" class="nav-link" id="sideBarreStock">
-          <i class="fas fa-sync-alt"></i>
+            <i class="fas fa-sync-alt"></i>
             <p>
               เติมสต็อกเวชภัณฑ์
             </p>
           </a>
         </li>
-        <!-- <li class="nav-item">
-          <a href="dashboard" class="nav-link" id="sideBarDashboard">
-            <i class="fas fa-tachometer-alt"></i>
+        <li class="nav-item">
+          <a href="historyOrder" class="nav-link" id="sideBar็istoryOrder">
+            <i class="fas fa-history"></i>
             <p>
-              Dashboard
+              ประวัติการเบิกเวชภัณฑ์
             </p>
           </a>
-        </li> -->
+        </li>
         <?php if ($_SESSION['role'] <= 1) { ?>
           <li class="nav-header">Management</li>
           <li class="nav-item">
