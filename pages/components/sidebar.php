@@ -28,7 +28,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="historyOrder" class="nav-link" id="sideBar็istoryOrder">
+          <a href="historyOrder" class="nav-link" id="sideBaristoryOrder">
             <i class="fas fa-history"></i>
             <p>
               ประวัติการเบิกเวชภัณฑ์

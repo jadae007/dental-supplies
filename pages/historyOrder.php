@@ -45,14 +45,14 @@
                   <div class="row">
                     <div class="col-2"></div>
                     <div class="col-10">
-                      <form>
+                      <form id="form">
                         <div class="form-row align-items-center">
                         <div class="col-sm-3 my-1">
                             <div class="input-group">
                               <div class="input-group-prepend">
                                 <div class="input-group-text">ตั้งแต่วันที่</div>
                               </div>
-                              <input type="date" class="form-control" id="startDate">
+                              <input type="date" class="form-control" id="startDate" value="">
                             </div>
                           </div>
                           <div class="col-sm-3 my-1">
@@ -60,11 +60,11 @@
                               <div class="input-group-prepend">
                                 <div class="input-group-text">ถึงวันที่</div>
                               </div>
-                              <input type="date" class="form-control" id="endDate">
+                              <input type="date" class="form-control" id="endDate" value="">
                             </div>
                           </div>
                           <div class="col-auto my-1">
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="button" id="changeDate" class="btn btn-success">Submit</button>
                           </div>
                         </div>
                       </form>
