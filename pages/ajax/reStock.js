@@ -66,6 +66,7 @@ const listItems = (group, type) => {
         <tr>
           <th scope="row">${++index}</th>
           <td>${element.itemName}</td>
+          <td style="display: none ;">${element.productBarcode}</td>
           <td>${element.groupName}</td>
           <td>${element.typeName}</td>
           <td>${element.unitCount}</td>

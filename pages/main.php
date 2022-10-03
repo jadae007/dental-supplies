@@ -78,6 +78,7 @@ require_once("query/auth/checkAdmin.php");
                             <tr>
                               <th scope="col">#</th>
                               <th scope="col">ชื่อเวชภัณฑ์</th>
+                              <th scope="col" style="display: none ;">Barcode</th>
                               <th scope="col">กลุ่ม</th>
                               <th scope="col">ประเภท</th>
                               <th scope="col">หน่วยนับ</th>

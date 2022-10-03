@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2022 at 09:07 AM
+-- Generation Time: Oct 03, 2022 at 10:15 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.30
 
@@ -78,12 +78,12 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `productBarcode`, `itemName`, `typeId`, `itemBrand`, `itemDetail`, `sellerCompany`, `unitCount`, `price`, `lowerLimit`, `upperLimit`, `storageLocation`, `amount`, `expireDate`, `expireNotice`, `itemActive`) VALUES
-(1, '000001', 'ไอเท็ม 1', 1, 'Brand 1', 'สำหรับทดสอบ', 'บริษัท ฮาไม่จำกัด', 'อัน', 25.50, 10, 500, 'ห้องเก็บของ ชั้น 1', 10, '2024-08-01', '1-y', 1),
-(2, '000002', 'ไอเท็ม 2', 4, 'Brand 2', 'อยู่ประเภท 4', '4mantech', 'กล่อง', 500.00, 5, 300, 'ห้องเก็บของ ชั้น 4', 200, '2023-04-04', '1-y', 0),
-(3, '0001', 'ทดสอบเพิ่ม 1', 1, 'ฮาโหล', 'ทดสอบทรายละเอียด', 'บริษัท', 'ชิ้น', 500.00, 1, 99, 'ชั้น 5', 2, '2023-12-18', '1-y', 1),
-(4, '00002', 'ทดสอบ 2', 1, 'ยี่ห้อ 1', 'ทดสอบเพิ่ม 2', 'บริษัท', 'กล่อง', 100.00, 1, 99, 'ในตู้', 6, '2022-09-14', '12-m', 1),
-(8, '033300', 'ทดสอบ 3', 3, '2', '1', '3', 'ชิ้น', 500.00, 1, 99, 'ห้อง', 10, '2023-09-09', '1-m', 1),
-(9, '5556998', 'ทดสอบชื่อยาววววววววววววววววววววววววววววววววววว', 2, 'Brand 1', 'อิอิ', 'บริษัท ฮาไม่จำกัด', 'ชิ้น', 500.00, 1, 300, 'ห้องเก็บของ ชั้น 4', 15, '2022-10-01', '1-y', 1);
+(1, '000001', 'ไอเท็ม 1', 1, 'Brand 1', 'สำหรับทดสอบ', 'บริษัท ฮาไม่จำกัด', 'อัน', 25.50, 10, 500, 'ห้องเก็บของ ชั้น 1', 27, '2024-08-01', '1-y', 1),
+(2, '000002', 'ไอเท็ม 2', 4, 'Brand 2', 'อยู่ประเภท 4', '4mantech', 'กล่อง', 500.00, 5, 300, 'ห้องเก็บของ ชั้น 4', 13, '2023-04-04', '1-y', 0),
+(3, '0001', 'ทดสอบเพิ่ม 1', 1, 'ฮาโหล', 'ทดสอบทรายละเอียด', 'บริษัท', 'ชิ้น', 500.00, 1, 99, 'ชั้น 5', 18, '2023-12-18', '1-y', 1),
+(4, '00002', 'ทดสอบ 2', 1, 'ยี่ห้อ 1', 'ทดสอบเพิ่ม 2', 'บริษัท', 'กล่อง', 100.00, 1, 99, 'ในตู้', 19, '2022-09-14', '12-m', 1),
+(8, '033300', 'ทดสอบ 3', 3, '2', '1', '3', 'ชิ้น', 500.00, 1, 99, 'ห้อง', 0, '2023-09-09', '1-m', 1),
+(9, '5556998', 'ทดสอบชื่อยาวววววววววววววววววววววววววววววววววววววววว', 2, 'Brand 1', 'อิอิ', 'บริษัท ฮาไม่จำกัด', 'ชิ้น', 500.00, 1, 300, 'ห้องเก็บของ ชั้น 4', 7, '2022-10-01', '1-y', 1);
 
 -- --------------------------------------------------------
 
@@ -97,6 +97,17 @@ CREATE TABLE `orders` (
   `userId` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `orderDate`, `userId`) VALUES
+(0000000001, '2022-09-01', 2),
+(0000000002, '2022-09-01', 2),
+(0000000003, '2022-09-15', 2),
+(0000000004, '2022-09-29', 2),
+(0000000005, '2022-09-29', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -109,6 +120,49 @@ CREATE TABLE `order_detail` (
   `itemId` int(11) NOT NULL,
   `quantity` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`id`, `orderId`, `itemId`, `quantity`) VALUES
+(1, 1, 1, 2),
+(2, 1, 3, 1),
+(3, 2, 4, 3),
+(4, 2, 8, 3),
+(5, 3, 8, 10),
+(6, 4, 9, 5),
+(7, 4, 4, 2),
+(8, 5, 1, 1),
+(9, 5, 3, 1),
+(10, 5, 4, 1),
+(11, 5, 9, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `restock`
+--
+
+CREATE TABLE `restock` (
+  `id` int(10) NOT NULL,
+  `itemId` int(11) NOT NULL,
+  `quantity` int(5) NOT NULL,
+  `userId` int(4) NOT NULL,
+  `restockDate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `restock`
+--
+
+INSERT INTO `restock` (`id`, `itemId`, `quantity`, `userId`, `restockDate`) VALUES
+(1, 1, 3, 2, '2022-09-27'),
+(2, 1, 7, 2, '2022-09-27'),
+(3, 3, 2, 2, '2022-09-27'),
+(4, 4, 12, 2, '2022-09-27'),
+(5, 1, 10, 2, '2022-09-27'),
+(6, 3, 5, 2, '2022-09-27');
 
 -- --------------------------------------------------------
 
@@ -196,6 +250,12 @@ ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `restock`
+--
+ALTER TABLE `restock`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `types`
 --
 ALTER TABLE `types`
@@ -229,13 +289,19 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `restock`
+--
+ALTER TABLE `restock`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `types`
