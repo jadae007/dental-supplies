@@ -125,7 +125,10 @@ require_once("query/auth/checkAdmin.php");
               <input type="hidden" id="idCart">
               <input type="hidden" id="itemName">
               <input type="hidden" id="maxQuantity">
-              <input type="number" class="form-control" min="1" max="9999" id="quantity" name="quantity">
+              <input type="text" class="form-control" min="1" max="9999" id="quantity" name="quantity" pattern="[0-9.]+">
+              <div class="invalid-feedback">
+                ไม่สามารถเบิกเวชภัณฑ์เกินจำนวนที่มีอยู่ได้
+              </div>
             </div>
           </div>
         </div>

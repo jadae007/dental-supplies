@@ -15,6 +15,12 @@ $(document).ready(function () {
     listItems(groupId, e.currentTarget.value);
   });
 
+$("#quantity").keyup(function (e) {
+  let maxQuantity = Number($("#maxQuantity").val());
+  if (Number(e.currentTarget.value) > maxQuantity ) return $("#quantity").addClass("is-invalid")
+  $("#quantity").removeClass("is-invalid")
+});
+
   $("#btnAddCart").click(function (e) {
     e.preventDefault();
     let id = $("#idCart").val();
@@ -33,7 +39,7 @@ $(document).ready(function () {
     }else{
       $("#quantity").addClass("is-invalid")
     }
-    
+
   });
 });
 
